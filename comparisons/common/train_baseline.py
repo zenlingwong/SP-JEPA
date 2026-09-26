@@ -1,4 +1,4 @@
-"""Auditable Ocean baseline training with periodic best/last validation."""
+"""Ocean baseline training with periodic validation."""
 
 import argparse
 import json

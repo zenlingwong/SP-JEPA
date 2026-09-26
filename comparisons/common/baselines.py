@@ -1,10 +1,7 @@
-"""D1-D4 Ocean baseline adapters.
+"""Ocean baseline adapters.
 
-U-Net and ConvLSTM follow the original paper contracts as task-specific
-reimplementations. SpectralConv2d follows the public neuraloperator/FNO
-computation and is wrapped in the same Ocean monthly transition interface.
-PDE-Transformer-MSE vendors the pinned authors' PDE-S mixed-channel core and
-wraps it in the same one-step Ocean interface.
+U-Net, ConvLSTM and FNO use task-specific implementations. PDE-Transformer-MSE
+loads the external PDE-S mixed-channel core. All use the same monthly interface.
 """
 
 import torch

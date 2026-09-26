@@ -1,4 +1,4 @@
-"""Ocean event readout and fusion for the released two-stage model."""
+"""Ocean event readout and observation fusion."""
 
 import math
 

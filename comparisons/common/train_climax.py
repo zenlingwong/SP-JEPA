@@ -1,4 +1,4 @@
-"""Auditable F1 ClimaX Ocean adapter runner."""
+"""ClimaX adaptation for ocean forecasting."""
 
 from __future__ import annotations
 

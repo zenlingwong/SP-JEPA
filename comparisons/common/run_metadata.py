@@ -1,4 +1,4 @@
-"""Anonymous, numeric run metadata shared by comparison trainers."""
+"""Numeric run metadata for comparison trainers."""
 
 NUMERIC_ARGUMENTS = (
     "steps", "validation_every", "batch_size", "workers", "seed", "lr",

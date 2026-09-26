@@ -60,7 +60,7 @@ def train(data_path: Path, output: Path, *, device: str, warmup_steps: int,
                 histories[k, :-1] = pairs["history"][rows[k + 1], :-1]
                 histories[k + 1, :-1] = pairs["history"][rows[k], :-1]
         sig_rows = [int(pairs["mechanism"][2 * key]) for key in keys]
-        # Original SIGReg chooses the lower root ID of each selected pair.
+        # Use the lower root ID of each pair for SIGReg.
         sig_rows = [min(int(pairs["mechanism"][2 * key]) * (2 if data["smoke"] else 16) +
                         int(pairs["initial"][2 * key]),
                         int(pairs["mechanism"][2 * key + 1]) * (2 if data["smoke"] else 16) +
@@ -98,8 +98,7 @@ def train(data_path: Path, output: Path, *, device: str, warmup_steps: int,
     torch.save({"model": model.state_dict(), "optimizer": optimizer.state_dict(),
                 "step": warmup_steps}, output / "warmup.pt")
 
-    # The registered paired phase is a fresh process that reconstructs the model,
-    # then loads the warm-up model and optimizer. Recreate its independent streams.
+    # Reset paired-stage streams and consume model-initialization draws.
     rng = np.random.default_rng(seed)
     swap_rng = np.random.default_rng(seed + 1000)
     torch.manual_seed(seed)
@@ -107,7 +106,7 @@ def train(data_path: Path, output: Path, *, device: str, warmup_steps: int,
                                   event_feedback=True, event_core_gradient=True)
     del _initialization
 
-    # Match the original calibration's sorted first 32 queried keys and swap_rng draws.
+    # Calibrate on the first 32 sorted query keys, including history-swap draws.
     calibration_keys = pair_keys[:min(32, len(pair_keys))]
     state_rng = torch.get_rng_state()
     response_scale = true_response_energy(paired_batch(calibration_keys))

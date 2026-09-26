@@ -42,7 +42,7 @@ def calendar_grid(length: int, start: int) -> torch.Tensor:
 
 def event_labels(history: torch.Tensor, factual: torch.Tensor, changed: torch.Tensor,
                  delta: torch.Tensor, threshold: torch.Tensor, epsilon: torch.Tensor):
-    """Original per-branch float32-storage plus oracle-tolerance event bounds."""
+    """Per-branch event bounds from storage error and numerical tolerance."""
     current = history[-1]
     factual_seq = torch.cat((current[None], factual), 0)
     changed_seq = torch.cat(((current + delta)[None], changed), 0)

@@ -1,7 +1,6 @@
 """Paired Transport–Exchange truth: periodic two-field advection, diffusion, exchange.
 
-The solver and independent random streams follow the registered nonlinear
-paired profile. Hidden mechanism parameters are data provenance only.
+Mechanism parameters are excluded from model inputs.
 """
 from __future__ import annotations
 

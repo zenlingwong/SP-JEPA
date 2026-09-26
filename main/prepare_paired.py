@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Generate the Paired Transport–Exchange environment's training and evaluation banks.
 
---smoke makes a small, deliberately non-reproducing fixture for interface tests.
-The saved tensor dictionary contains no local paths or private cache metadata.
+--smoke generates a smaller dataset for interface checks.
 """
 from __future__ import annotations
 
@@ -19,7 +18,7 @@ from src.unified_protocol import frozen_pair_table
 
 
 def select_uniform_pairs(table, seed: int):
-    """Original seed coverage followed by eight uniform 32-key acquisition rounds."""
+    """Seed coverage followed by eight uniform 32-key acquisition rounds."""
     actions = action_bank()
     candidates = [(pair, action.index) for pair in range(len(table)) for action in actions]
 
@@ -54,7 +53,7 @@ def select_uniform_pairs(table, seed: int):
 
 
 def numerical_epsilon(smoke: bool) -> torch.Tensor:
-    """Adjacent 1/8 to 1/16 refinement on the original qualification fixtures."""
+    """Check adjacent 1/8 to 1/16 numerical refinement."""
     fixtures = [(m, i) for m in range(1 if smoke else 8) for i in ((0,) if smoke else (0, 7, 15))]
     actions = action_bank()[:1] if smoke else action_bank()
     epsilon = torch.zeros(2, dtype=torch.float64)

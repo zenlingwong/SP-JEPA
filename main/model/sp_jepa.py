@@ -120,9 +120,7 @@ class SPJEPA(nn.Module):
         nn.init.zeros_(self.a_out.weight); nn.init.zeros_(self.a_out.bias)
         self.decoder = nn.Linear(d, spec.channels * spec.height * spec.width)
 
-        # The original model constructed an unused mask head here. Its parameters
-        # were frozen and excluded from optimization, but construction advanced the
-        # RNG before the second-stage event head was initialized.
+        # Preserve the initialization RNG sequence for the second-stage event head.
         mask_width = 2 * spec.history * (d + rank) + 5
         _unused_mask_head = nn.Sequential(nn.Linear(mask_width, 128), nn.GELU(),
                                           nn.Linear(128, 128), nn.GELU(), nn.Linear(128, 1), nn.Sigmoid())

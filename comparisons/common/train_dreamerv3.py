@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Auditable W1 DreamerV3-RSSM Ocean forecasting adaptation."""
+"""DreamerV3-RSSM adaptation for ocean forecasting."""
 
 from __future__ import annotations
 

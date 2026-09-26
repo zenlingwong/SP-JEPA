@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Auditable factual LeWM-style Ocean training with the shared run contract."""
+"""Factual LeWM-style ocean training."""
 
 from __future__ import annotations
 

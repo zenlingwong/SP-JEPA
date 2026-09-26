@@ -1,1 +1,1 @@
-"""Shared world-model components for the two released environments."""
+"""Shared world-model components for the ocean and paired environments."""
