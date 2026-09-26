@@ -19,7 +19,7 @@ Use Python 3.10 or newer. From the package root, install the main dependencies w
 The code expects a separately supplied prepared release with this layout:
 
 ```text
-data/ocean/
+data/
   global_state.h5
   folds/main/manifest.json
   folds/main/windows.csv
@@ -62,21 +62,21 @@ Each origin uses 12 history months and the next three target months. Rolling eva
 `build_global_state.py` requires an aligned native archive with `field[372,5,713,1440]`, a same-shaped `valid_mask`, `latitude[713]`, `longitude[1440]`, and `time[372]`; an SST HDF5 file with `lat`, `lon`, `time`, and `sst`; and a JSON manifest with a calendar-ordered `carbon_files` list of 372 HDF5 files containing `latitude`, `longitude`, `time`, and `fgco2`. Relative carbon paths resolve from the manifest directory. The upstream alignment and catalogue-processing pipeline is not included. A separately prepared event table is also required and is not generated here, so this package does not rebuild the release from raw public downloads.
 
 ```bash
-python data_preparation/build_global_state.py --base inputs/native_fields.nc --sst inputs/sst.mon.mean.nc --carbon-manifest inputs/carbon_files.json --output data/ocean
-python data_preparation/build_carbon_targets.py --root data/ocean
+python data_preparation/build_global_state.py --base inputs/native_fields.nc --sst inputs/sst.mon.mean.nc --carbon-manifest inputs/carbon_files.json --output data
+python data_preparation/build_carbon_targets.py --root data
 ```
 
 Supply `events/manifest.json` and `events/main/monthly_events.h5` from the complete prepared release before fitting event statistics:
 
 ```bash
-python main/prepare_ocean.py --data-root data/ocean --output data/ocean_event_statistics.json
+python main/prepare_ocean.py --data-root data --output data/event_statistics.json
 ```
 
 The main recipe runs 28,000 first-stage and 2,000 second-stage updates, validates every 500 and 100 updates, and selects each stage by validation field MSE. Run the formal seeds 17, 29, and 43 independently; this command shows seed 17:
 
 ```bash
-python main/train_ocean.py --recipe main --data-root data/ocean --event-statistics data/ocean_event_statistics.json --seed 17 --device cuda:0 --output runs/ocean_s17 --save-predictions
-python main/evaluate_ocean.py --checkpoint runs/ocean_s17/stage2_best.pt --data-root data/ocean --split validation --device cuda:0 --output runs/ocean_s17/evaluation.json
+python main/train_ocean.py --recipe main --data-root data --event-statistics data/event_statistics.json --seed 17 --device cuda:0 --output runs/ocean_s17 --save-predictions
+python main/evaluate_ocean.py --checkpoint runs/ocean_s17/stage2_best.pt --data-root data --split validation --device cuda:0 --output runs/ocean_s17/evaluation.json
 ```
 
 `--recipe development` selects the 3,000+2,000-update fixed-endpoint recipe. Checkpoints include model weights, the physical basis, event statistics, field climatology, and model settings; datasets and pretrained comparison weights are separate inputs.
