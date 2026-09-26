@@ -1,0 +1,78 @@
+{
+  "dpot": [
+    "vendor/dpot_upstream/__init__.py",
+    "vendor/dpot_upstream/dpot.py"
+  ],
+  "dreamerv3": [
+    "model/dreamerv3.py",
+    "vendor/dreamerv3/LICENSE.txt"
+  ],
+  "eawm": [
+    "model/EAWM_LICENSE.txt",
+    "model/LEWM_LICENSE.txt",
+    "model/events.py",
+    "model/lewm.py"
+  ],
+  "enma": [
+    "vendor/enma/__init__.py",
+    "vendor/enma/encoding/__init__.py",
+    "vendor/enma/encoding/abstract.py",
+    "vendor/enma/encoding/irregular/_1d/__init__.py",
+    "vendor/enma/encoding/irregular/_1d/compressor.py",
+    "vendor/enma/encoding/irregular/_1d/convlayer.py",
+    "vendor/enma/encoding/irregular/_1d/encoder_decoder.py",
+    "vendor/enma/encoding/irregular/_1d/interpolator.py",
+    "vendor/enma/encoding/irregular/_2d/__init__.py",
+    "vendor/enma/encoding/irregular/_2d/compressor.py",
+    "vendor/enma/encoding/irregular/_2d/convlayer.py",
+    "vendor/enma/encoding/irregular/_2d/encoder_decoder.py",
+    "vendor/enma/encoding/irregular/_2d/interpolator.py",
+    "vendor/enma/encoding/irregular/__init__.py",
+    "vendor/enma/encoding/irregular/attention.py",
+    "vendor/enma/encoding/irregular/ff.py",
+    "vendor/enma/encoding/irregular/utils.py",
+    "vendor/enma/encoding/regular/_1d/__init__.py",
+    "vendor/enma/encoding/regular/_1d/encoder_decoder.py",
+    "vendor/enma/encoding/regular/_2d/__init__.py",
+    "vendor/enma/encoding/regular/_2d/encoder_decoder.py",
+    "vendor/enma/encoding/regular/__init__.py",
+    "vendor/enma/process/__init__.py",
+    "vendor/enma/process/attention_utils.py",
+    "vendor/enma/process/kv_cache.py",
+    "vendor/enma/process/mar_loss.py",
+    "vendor/enma/process/model.py",
+    "vendor/enma/process/utils.py",
+    "vendor/enma/utils/__init__.py",
+    "vendor/enma/utils/distributions.py"
+  ],
+  "lewm": [
+    "model/EAWM_LICENSE.txt",
+    "model/LEWM_LICENSE.txt",
+    "model/events.py",
+    "model/lewm.py"
+  ],
+  "pde_transformer_mse": [
+    "vendor/pde_transformer_mixed/LICENSE.txt",
+    "vendor/pde_transformer_mixed/__init__.py",
+    "vendor/pde_transformer_mixed/compat.py",
+    "vendor/pde_transformer_mixed/pde_transformer.py",
+    "vendor/pde_transformer_mixed/udit.py"
+  ],
+  "pde_transformer_pretrained": [
+    "vendor/pde_transformer_mixed/LICENSE.txt",
+    "vendor/pde_transformer_mixed/__init__.py",
+    "vendor/pde_transformer_mixed/compat.py",
+    "vendor/pde_transformer_mixed/pde_transformer.py",
+    "vendor/pde_transformer_mixed/udit.py"
+  ],
+  "poseidon": [
+    "vendor/poseidon_scot/__init__.py",
+    "vendor/poseidon_scot/model.py"
+  ],
+  "tc_lewm": [
+    "model/EAWM_LICENSE.txt",
+    "model/LEWM_LICENSE.txt",
+    "model/events.py",
+    "model/lewm.py"
+  ]
+}

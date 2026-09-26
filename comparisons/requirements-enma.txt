@@ -1,0 +1,4 @@
+-r requirements.txt
+torch>=2.6
+flow-matching
+scipy>=1.10
